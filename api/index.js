@@ -1,0 +1,57 @@
+const express = require('express');
+const { getCakes, getSingleCake, addCake, updateCake, deleteCake } = require('../controller/CakesController')
+
+const router = express.Router();
+
+router.get('/cakes', async (req, res) => {
+  try {
+    const data = await getCakes();
+    res.status(200).json({ success: true, data})
+  } catch (error) {
+    await res.status(502).json({ success: false, error })
+  }
+});
+
+router.get('/cakes:/cakeId', async (req, res) => {
+  const { cakeId } = req.params;
+  try {
+    const data = await getSingleCake(cakeId);
+    res.status(200).json({ success: true, data})
+  } catch (error) {
+    await res.status(502).json({ success: false, error })
+  }
+});
+
+router.put('/cakes/:cakeId', async (req, res) => {
+  const { cakeId } = req.params;
+  try {
+    const data = await updateCake(cakeId);
+    res.status(200).json({ success: true, data})
+  } catch (error) {
+    await res.status(502).json({ success: false, error })
+  }
+});
+
+router.post('/cakes', async (req, res) => {
+  console.log(req.body);
+  
+  const { name, comment, imageUrl } = req.body;
+  try {
+    const data = await addCake({ name, comment, imageUrl });
+    res.status(200).json({ success: true, data})
+  } catch (error) {
+    await res.status(502).json({ success: false, error })
+  }
+});
+
+router.delete('/cakes/:cakeId', async (req, res) => {
+  const { cakeId } = req.params;
+  try {
+    const data = await deleteCake(cakeId);
+    res.status(200).json({ success: true, data})
+  } catch (error) {
+    await res.status(502).json({ success: false, error })
+  }
+});
+
+module.exports = router;
