@@ -12,7 +12,7 @@ router.get('/cakes', async (req, res) => {
   }
 });
 
-router.get('/cakes:/cakeId', async (req, res) => {
+router.get('/cakes/:cakeId', async (req, res) => {
   const { cakeId } = req.params;
   try {
     const data = await getSingleCake(cakeId);
@@ -25,7 +25,7 @@ router.get('/cakes:/cakeId', async (req, res) => {
 router.put('/cakes/:cakeId', async (req, res) => {
   const { cakeId } = req.params;
   try {
-    const data = await updateCake(cakeId);
+    const data = await updateCake(cakeId, req.body);
     res.status(200).json({ success: true, data})
   } catch (error) {
     await res.status(502).json({ success: false, error })

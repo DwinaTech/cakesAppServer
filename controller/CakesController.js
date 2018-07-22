@@ -29,9 +29,9 @@ async function addCake(data) {
     }
 }
 
-async function updateCake(cakeId) {
+async function updateCake(cakeId, data) {
     try {
-        const response = await Cakes.findByIdAndUpdate(cakeId);
+        const response = await Cakes.findByIdAndUpdate(cakeId, data, {new: true});
         return response;
     } catch (error) {
         return error;

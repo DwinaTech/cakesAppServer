@@ -3,7 +3,7 @@ const { getFavoriteCakes, getSingleFavoriteCake, addFavoriteCake, updateFavorite
 
 const router = express.Router();
 
-router.get('/favoriteakes', async (req, res) => {
+router.get('/favoritecakes', async (req, res) => {
     try {
       const data = await getFavoriteCakes();
       res.status(200).json({ success: true, data})
@@ -12,7 +12,7 @@ router.get('/favoriteakes', async (req, res) => {
     }
   });
   
-  router.get('/favoriteakes:/cakeId', async (req, res) => {
+  router.get('/favoritecakes:/cakeId', async (req, res) => {
     const { cakeId } = req.params;
     try {
       const data = await getSingleFavoriteCake(cakeId);
@@ -22,7 +22,7 @@ router.get('/favoriteakes', async (req, res) => {
     }
   });
   
-  router.put('/favoriteakes/:cakeId', async (req, res) => {
+  router.put('/favoritecakes/:cakeId', async (req, res) => {
     const { cakeId } = req.params;
     try {
       const data = await updateFavoriteCakeNum(cakeId);
@@ -32,19 +32,17 @@ router.get('/favoriteakes', async (req, res) => {
     }
   });
   
-  router.post('/favoriteakes', async (req, res) => {
-    console.log(req.body);
-    
-    const { name, comment, imageUrl } = req.body;
+  router.post('/favoritecakes', async (req, res) => {
+    const { name, comment, imageUrl, yumFactor } = req.body;
     try {
-      const data = await addFavoriteCake({ name, comment, imageUrl });
+      const data = await addFavoriteCake({ name, comment, imageUrl, yumFactor });
       res.status(200).json({ success: true, data})
     } catch (error) {
       await res.status(502).json({ success: false, error })
     }
   });
   
-  router.delete('/favoriteakes/:cakeId', async (req, res) => {
+  router.delete('/favoritecakes/:cakeId', async (req, res) => {
     const { cakeId } = req.params;
     try {
       const data = await deleteFavoriteCake(cakeId);
