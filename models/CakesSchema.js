@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+// Cakes schema structure
 const CakesSchema = new Schema({
     name: String,
     comment: String,

@@ -3,6 +3,7 @@ const { getCakes, getSingleCake, addCake, updateCake, deleteCake } = require('..
 
 const router = express.Router();
 
+// Get list of cakes
 router.get('/cakes', async (req, res) => {
   try {
     const data = await getCakes();
@@ -12,6 +13,7 @@ router.get('/cakes', async (req, res) => {
   }
 });
 
+// Get single cake full details
 router.get('/cakes/:cakeId', async (req, res) => {
   const { cakeId } = req.params;
   try {
@@ -22,6 +24,7 @@ router.get('/cakes/:cakeId', async (req, res) => {
   }
 });
 
+// Edit single cake
 router.put('/cakes/:cakeId', async (req, res) => {
   const { cakeId } = req.params;
   try {
@@ -32,6 +35,7 @@ router.put('/cakes/:cakeId', async (req, res) => {
   }
 });
 
+// Add new single cake
 router.post('/cakes', async (req, res) => {
   console.log(req.body);
   
@@ -44,6 +48,7 @@ router.post('/cakes', async (req, res) => {
   }
 });
 
+// Delete single cake
 router.delete('/cakes/:cakeId', async (req, res) => {
   const { cakeId } = req.params;
   try {

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+// Favorite cakes schema structure
 const FavoriteCakesSchema = new Schema({
     name: String,
     comment: String,

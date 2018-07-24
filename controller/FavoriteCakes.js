@@ -1,6 +1,9 @@
 const FavoriteCake = require('../models/FavoriteCakes');
 require('../db/connection');
 
+// Favorite cakes reset API functions controller
+
+// Get list of favorite cakes from db
 async function getFavoriteCakes() {
     try {
         const response = await FavoriteCake.find({});
@@ -10,6 +13,7 @@ async function getFavoriteCakes() {
     }
 }
 
+// Get single favorite cake full details from db
 async function getSingleFavoriteCake(cakeId) {
     try {
         const response = await FavoriteCake.findById(cakeId)
@@ -19,6 +23,7 @@ async function getSingleFavoriteCake(cakeId) {
     }
 }
 
+// Add new single favorite cake to db
 async function addFavoriteCake(data) {
     try {
         const newCakes = new FavoriteCake(data);
@@ -29,6 +34,7 @@ async function addFavoriteCake(data) {
     }
 }
 
+// Update single favorite cake
 async function updateFavoriteCakeNum(cakeId) {
     try {
         const response = await FavoriteCake.findByIdAndUpdate(cakeId);
@@ -38,6 +44,7 @@ async function updateFavoriteCakeNum(cakeId) {
     }
 }
 
+// Delete single favorite cake from db
 async function deleteFavoriteCake(cakeId) {
     try {
         const response = await FavoriteCake.findByIdAndRemove(cakeId)
@@ -47,6 +54,7 @@ async function deleteFavoriteCake(cakeId) {
     }
 }
 
+// export all functions to use at different files
 module.exports = {
     getFavoriteCakes,
     getSingleFavoriteCake,

@@ -1,6 +1,9 @@
 const Cakes = require('../models/CakesSchema');
 require('../db/connection');
 
+// Cakes reset API functions controller
+
+// Get list of cakes from db
 async function getCakes() {
     try {
         const response = await Cakes.find({});
@@ -10,6 +13,7 @@ async function getCakes() {
     }
 }
 
+// Get single cake from db
 async function getSingleCake(cakeId) {
     try {
         const response = await Cakes.findById(cakeId)
@@ -19,6 +23,7 @@ async function getSingleCake(cakeId) {
     }
 }
 
+// Add single cake to db
 async function addCake(data) {
     try {
         const newCakes = new Cakes(data);
@@ -29,6 +34,7 @@ async function addCake(data) {
     }
 }
 
+// Update single cake
 async function updateCake(cakeId, data) {
     try {
         const response = await Cakes.findByIdAndUpdate(cakeId, data, {new: true});
@@ -38,6 +44,7 @@ async function updateCake(cakeId, data) {
     }
 }
 
+// Delete single cake from db
 async function deleteCake(cakeId) {
     try {
         const response = await Cakes.findByIdAndRemove(cakeId)
@@ -47,6 +54,7 @@ async function deleteCake(cakeId) {
     }
 }
 
+// export all functions to use at different files
 module.exports = {
     addCake,
     getCakes,
