@@ -9,7 +9,7 @@ router.get('/favoritecakes', async (req, res) => {
     const data = await getFavoriteCakes();
     res.status(200).json({ success: true, data})
   } catch (error) {
-    await res.status(502).json({ success: false, error })
+    await res.status(502).json({ message: "There is an error occurred", success: false, error })
   }
 });
 
@@ -20,7 +20,7 @@ router.get('/favoritecakes:/cakeId', async (req, res) => {
     const data = await getSingleFavoriteCake(cakeId);
     res.status(200).json({ success: true, data})
   } catch (error) {
-    await res.status(502).json({ success: false, error })
+    await res.status(502).json({ message: "There is an error occurred", success: false, error })
   }
 });
 
@@ -31,7 +31,7 @@ router.put('/favoritecakes/:cakeId', async (req, res) => {
     const data = await updateFavoriteCakeNum(cakeId);
     res.status(200).json({ success: true, data})
   } catch (error) {
-    await res.status(502).json({ success: false, error })
+    await res.status(502).json({ message: "There is an error occurred", success: false, error })
   }
 });
 
@@ -42,7 +42,7 @@ router.post('/favoritecakes', async (req, res) => {
     const data = await addFavoriteCake({ name, comment, imageUrl, yumFactor });
     res.status(200).json({ success: true, data})
   } catch (error) {
-    await res.status(502).json({ success: false, error })
+    await res.status(502).json({ message: "There is an error occurred", success: false, error })
   }
 });
 
@@ -53,7 +53,7 @@ router.delete('/favoritecakes/:cakeId', async (req, res) => {
     const data = await deleteFavoriteCake(cakeId);
     res.status(200).json({ success: true, data})
   } catch (error) {
-    await res.status(502).json({ success: false, error })
+    await res.status(502).json({ message: "There is an error occurred", success: false, error })
   }
 });
 

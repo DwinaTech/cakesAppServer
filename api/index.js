@@ -9,7 +9,7 @@ router.get('/cakes', async (req, res) => {
     const data = await getCakes();
     res.status(200).json({ success: true, data})
   } catch (error) {
-    await res.status(502).json({ success: false, error })
+    await res.status(502).json({ message: "There is an error occurred", success: false, error })
   }
 });
 
@@ -20,7 +20,7 @@ router.get('/cakes/:cakeId', async (req, res) => {
     const data = await getSingleCake(cakeId);
     res.status(200).json({ success: true, data})
   } catch (error) {
-    await res.status(502).json({ success: false, error })
+    await res.status(502).json({ message: "There is an error occurred", success: false, error })
   }
 });
 
@@ -31,7 +31,7 @@ router.put('/cakes/:cakeId', async (req, res) => {
     const data = await updateCake(cakeId, req.body);
     res.status(200).json({ success: true, data})
   } catch (error) {
-    await res.status(502).json({ success: false, error })
+    await res.status(502).json({ message: "There is an error occurred", success: false, error })
   }
 });
 
@@ -42,7 +42,7 @@ router.post('/cakes', async (req, res) => {
     const data = await addCake({ name, comment, imageUrl });
     res.status(200).json({ success: true, data})
   } catch (error) {
-    await res.status(502).json({ success: false, error })
+    await res.status(502).json({ message: "There is an error occurred", success: false, error })
   }
 });
 
@@ -53,7 +53,7 @@ router.delete('/cakes/:cakeId', async (req, res) => {
     const data = await deleteCake(cakeId);
     res.status(200).json({ success: true, data})
   } catch (error) {
-    await res.status(502).json({ success: false, error })
+    await res.status(502).json({ message: "There is an error occurred", success: false, error })
   }
 });
 
