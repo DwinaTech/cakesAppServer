@@ -37,8 +37,6 @@ router.put('/cakes/:cakeId', async (req, res) => {
 
 // Add new single cake
 router.post('/cakes', async (req, res) => {
-  console.log(req.body);
-  
   const { name, comment, imageUrl } = req.body;
   try {
     const data = await addCake({ name, comment, imageUrl });
